@@ -3,9 +3,9 @@ package sebfisch;
 import java.util.function.Function;
 
 public interface BasicRecursiveList<T> {
-    static class Empty<T> implements BasicRecursiveList<T> {}
+    class Empty<T> implements BasicRecursiveList<T> {}
 
-    static class Populated<T> implements BasicRecursiveList<T> {
+    class Populated<T> implements BasicRecursiveList<T> {
         private final T head;
         private final BasicRecursiveList<T> tail;
 

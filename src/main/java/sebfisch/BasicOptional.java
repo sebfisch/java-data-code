@@ -3,13 +3,13 @@ package sebfisch;
 import java.util.function.Function;
 
 public interface BasicOptional<T> {
-    static class Empty<T> implements BasicOptional<T> {
+    class Empty<T> implements BasicOptional<T> {
         public <U> BasicOptional<U> map(Function<T,U> fun) {
             return new Empty<>();
         }
     }
 
-    static class Present<T> implements BasicOptional<T> {
+    class Present<T> implements BasicOptional<T> {
         private final T value;
 
         public Present(T value) {
