@@ -1,9 +1,22 @@
 package sebfisch;
 
-public interface RecursiveList<T> {
-    // TODO: Task 2.1 - implement recursive lists as sealed interface with nested records
+import java.util.Arrays;
 
-    // TODO: Task 4.1 - implement length, map, and filter functions as default methods
+public sealed interface RecursiveList<T> {
+    record Empty<T> () implements RecursiveList<T> {
+    }
 
-    // TODO: Task 5.1 - refactor length, map, and filter to use patterns in switch expressions
+    record Populated<T> (T head, RecursiveList<T> tail)
+            implements RecursiveList<T> {
+    }
+
+    static <U> RecursiveList<U> of(U... args) {
+        if (args.length == 0) {
+            return new Empty<>();
+        }
+
+        return new Populated<>(
+                args[0],
+                of(Arrays.copyOfRange(args, 1, args.length)));
+    }
 }

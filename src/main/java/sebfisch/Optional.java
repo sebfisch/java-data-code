@@ -17,7 +17,11 @@ public sealed interface Optional<T> {
     }
 
     record Present<T> (T value) implements Optional<T> {
-        // TODO: Task 1.1 - add null check to constructor of present optionals
+        public Present {
+            if (value == null) {
+                throw new IllegalArgumentException("value must not be null");
+            }
+        }
     }
 
     default <U> Optional<U> map(Function<T, U> fun) {
