@@ -13,7 +13,6 @@ public interface BasicOptional<T> {
         private final T value;
 
         public Present(T value) {
-            // TODO: null check
             this.value = value;
         }
 

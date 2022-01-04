@@ -6,7 +6,6 @@ public class BasicRGBColor {
     private final double blue;
 
     public BasicRGBColor(double red, double green, double blue) {
-        // TODO: check between 0 and 1
         this.red = red;
         this.green = green;
         this.blue = blue;
