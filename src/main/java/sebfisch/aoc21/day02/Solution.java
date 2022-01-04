@@ -1,7 +1,31 @@
 package sebfisch.aoc21.day02;
 
-public class Solution {
-    // TODO: Task 3.1 - implement task from Advent of Code 2021, Day 2
+import java.io.IOException;
+import java.net.URISyntaxException;
+import java.net.URL;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.util.stream.Stream;
 
-    // TODO: Task 6.1 - refactor your solution using features from the second part of the tutorial
+public class Solution {
+    private Solution() {
+        // static methods only
+    }
+
+    public static void testExampleInput() {
+        final Position pos = new Position();
+        Command.exampleInput().forEach(pos::moveBy);
+        System.out.println(pos.product());
+    }
+
+    public static void main(String[] args) throws URISyntaxException, IOException {
+        testExampleInput();
+
+        final Position pos = new Position();
+        URL resource = Solution.class.getResource("/commands.txt");
+        try (Stream<String> lines = Files.lines(Paths.get(resource.toURI()))) {
+            lines.map(Command::parse).forEach(pos::moveBy);
+        }
+        System.out.println(pos.product());
+    }
 }
