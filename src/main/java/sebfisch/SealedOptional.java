@@ -1,7 +1,8 @@
 package sebfisch;
 
-public sealed interface SealedOptional<T> 
-        permits SealedOptional.Empty<T>, SealedOptional.Present<T> {
+public sealed interface SealedOptional<T>
+// permits SealedOptional.Empty<T>, SealedOptional.Present<T>
+{
     final class Empty<T> implements SealedOptional<T> {
     }
 
