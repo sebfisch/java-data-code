@@ -12,20 +12,23 @@ public class Solution {
         // static methods only
     }
 
-    public static void testExampleInput() {
+    public static void processExampleInput() {
         final Position pos = new Position();
         Command.exampleInput().forEach(pos::moveBy);
         System.out.println(pos.product());
     }
 
-    public static void main(String[] args) throws URISyntaxException, IOException {
-        testExampleInput();
-
+    public static void processLargeInput() throws URISyntaxException, IOException {
         final Position pos = new Position();
         URL resource = Solution.class.getResource("/commands.txt");
         try (Stream<String> lines = Files.lines(Paths.get(resource.toURI()))) {
             lines.map(Command::parse).forEach(pos::moveBy);
         }
         System.out.println(pos.product());
+    }
+
+    public static void main(String[] args) throws URISyntaxException, IOException {
+        processExampleInput();
+        processLargeInput();
     }
 }
