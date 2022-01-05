@@ -4,7 +4,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 import org.junit.jupiter.api.Test;
 
-public class OptionalTest {
+class OptionalTest {
     @Test
     void testPresent() {
         assertEquals("x", new Optional.Present<>("x").value());
