@@ -1,8 +1,8 @@
 package sebfisch.aoc21.day02;
 
 public class Position {
-    private int depth;
-    private int horizontal;
+    protected int depth;
+    protected int horizontal;
 
     public Position() {
         this.depth = 0;
@@ -14,16 +14,16 @@ public class Position {
     }
 
     public void moveBy(Command cmd) {
-        switch (cmd) {
-            case Command.Up up:
-                this.depth -= up.steps();
-                break;
-            case Command.Down down:
-                this.depth += down.steps();
-                break;
-            case Command.Forward forward:
-                this.horizontal += forward.steps();
-                break;
+        if (cmd instanceof Command.Up) {
+            depth -= cmd.steps();
+        }
+
+        if (cmd instanceof Command.Down) {
+            depth += cmd.steps();
+        }
+
+        if (cmd instanceof Command.Forward) {
+            horizontal += cmd.steps();
         }
     }
 }

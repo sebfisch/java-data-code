@@ -3,6 +3,8 @@ package sebfisch.aoc21.day02;
 import java.util.stream.Stream;
 
 public sealed interface Command {
+    int steps();
+
     record Up(int steps) implements Command {}
     record Down(int steps) implements Command {}
     record Forward(int steps) implements Command {}
@@ -15,6 +17,13 @@ public sealed interface Command {
         }
 
         final int steps = Integer.parseInt(parts[1]);
+
+        // switch (parts[0]) {
+        //     case "up": return new Up(steps);
+        //     case "down": return new Down(steps);
+        //     case "forward": return new Forward(steps);
+        //     default: throw new IllegalArgumentException("invalid command");
+        // }
 
         return switch (parts[0]) {
             case "up" -> new Up(steps);
