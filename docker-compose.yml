@@ -22,6 +22,7 @@ services:
     volumes:
       - home:/home
         # Adjust directories and user to reflect above changes to build args
+      - ~/.ssh:/home/me/.ssh/:ro
       - .:/home/me/java-data-code
     working_dir: /home/me/java-data-code
     user: me
