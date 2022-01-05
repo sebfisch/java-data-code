@@ -1,4 +1,4 @@
-# Functional Patterns in Java
+# Algebraic Datatypes and Pattern Matching in Java
 
 This repository contains source code underlying
 [Algebraic Datatypes and Pattern Matching in Java](https://sebfisch.github.io/java-data/).
