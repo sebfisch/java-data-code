@@ -12,18 +12,17 @@ public sealed interface Optional<T> {
     }
 
     default <U> Optional<U> map(Function<T, U> fun) {
-        if (this instanceof Present<T> self) {
-            return new Present<>(fun.apply(self.value));
-        }
-
-        return new Empty<>();
+        return switch (this) {
+            case Empty<T> self -> new Empty<>();
+            case Present<T> self -> new Present<>(fun.apply(self.value));
+        };
     }
 
     default Optional<T> filter(Predicate<T> pred) {
-        if (this instanceof Present<T> self && pred.test(self.value)) {
-            return this;
-        }
-
-        return new Empty<>();
+        return switch (this) {
+            case Empty<T> self -> self;
+            case Present<T> self && pred.test(self.value) -> self;
+            case Present<T> self -> new Empty<>();
+        };
     }
 }

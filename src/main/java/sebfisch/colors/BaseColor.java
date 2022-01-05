@@ -13,10 +13,10 @@ public enum BaseColor {
 
     public static String describe1(BaseColor color) {
         switch (color) {
-            case RED:
-                return "hot";
-            case GREEN, BLUE:
-                return "cold";
+            case RED, GREEN:
+                return "ends with consonant";
+            case BLUE:
+                return "ends with vowel";
             default:
                 throw new IllegalArgumentException("unreachable");
         }
@@ -25,10 +25,10 @@ public enum BaseColor {
     public static String describe2(BaseColor color) {
         switch (color) {
             case RED:
-                return "hot";
             case GREEN:
+                return "ends with consonant";
             case BLUE:
-                return "cold";
+                return "ends with vowel";
             default:
                 throw new IllegalArgumentException("unreachable");
         }
@@ -36,11 +36,11 @@ public enum BaseColor {
 
     public static String describe3(BaseColor color) {
         switch (color) {
-            case RED -> {
-                return "hot";
+            case RED, GREEN -> {
+                return "ends with consonant";
             }
-            case GREEN, BLUE -> {
-                return "cold";
+            case BLUE -> {
+                return "ends with vowel";
             }
             default -> throw new IllegalArgumentException("unreachable");
         }
@@ -48,37 +48,37 @@ public enum BaseColor {
 
     public static String describe4(BaseColor color) {
         return switch (color) {
-            case RED:
-                yield "hot";
-            case GREEN, BLUE:
-                yield "cold";
+            case RED, GREEN:
+                yield "ends with consonant";
+            case BLUE:
+                yield "ends with vowel";
         };
     }
 
     public static String describe5(BaseColor color) {
         return switch (color) {
             case RED:
-                yield "hot";
             case GREEN:
+                yield "ends with consonant";
             case BLUE:
-                yield "cold";
+                yield "ends with vowel";
         };
     }
 
     public static String describe6(BaseColor color) {
         return switch (color) {
-            case RED -> "hot";
-            case GREEN, BLUE -> {
-                final String cold = "c" + "o" + "l" + "d";
-                yield cold;
+            case RED, GREEN -> "ends with consonant";
+            case BLUE -> {
+                final String result = "ends" + " with " + "vowel";
+                yield result;
             }
         };
     }
 
     public static String describe7(BaseColor color) {
         return switch (color) {
-            case RED -> "hot";
-            case GREEN, BLUE -> "cold";
+            case RED, GREEN -> "ends with consonant";
+            case BLUE -> "ends with vowel";
         };
     }
 }

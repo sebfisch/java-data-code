@@ -29,4 +29,31 @@ public record RGBColor(double red, double green, double blue) {
                 .max(Comparator.comparing(AugmentedColor::brightness))
                 .map(AugmentedColor::color);
     }
+
+    public static String describeWithDefaultBranch(RGBColor color) {
+        return switch (color) {
+            case RGBColor c && c.red > c.green && c.red > c.blue -> "reddish";
+            case RGBColor c && c.green > c.red && c.green > c.blue -> "greenish";
+            case RGBColor c && c.blue > c.red && c.blue > c.green -> "blueish";
+            default -> "colorless";
+        };
+    }
+
+    public static String describeWithNullCheck(RGBColor color) {
+        return switch (color) {
+            case RGBColor c && c.red > c.green && c.red > c.blue -> "reddish";
+            case RGBColor c && c.green > c.red && c.green > c.blue -> "greenish";
+            case RGBColor c && c.blue > c.red && c.blue > c.green -> "blueish";
+            case null, default -> "colorless";
+        };
+    }
+
+    public static String describeWithTotalBranch(RGBColor color) {
+        return switch (color) {
+            case RGBColor c && c.red > c.green && c.red > c.blue -> "reddish";
+            case RGBColor c && c.green > c.red && c.green > c.blue -> "greenish";
+            case RGBColor c && c.blue > c.red && c.blue > c.green -> "blueish";
+            case RGBColor c -> "colorless";
+        };
+    }
 }
