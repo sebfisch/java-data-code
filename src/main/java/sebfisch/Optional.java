@@ -8,7 +8,7 @@ public sealed interface Optional<T> {
     }
 
     record Present<T> (T value) implements Optional<T> {
-        // TODO: Task 1.1 - add null check
+        // TODO: Task 1.1 - add null check to constructor of present optionals
     }
 
     default <U> Optional<U> map(Function<T, U> fun) {

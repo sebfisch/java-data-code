@@ -16,7 +16,7 @@ class OptionalTest {
         assertEquals(new Optional.Present<>("y"), new Optional.Present<>("y"));
     }
 
-    // TODO: Task 1.1 - add test for null check
+    // TODO: Task 1.1 - add test for null check in present constructor
 
     @Test
     void testMap() {
