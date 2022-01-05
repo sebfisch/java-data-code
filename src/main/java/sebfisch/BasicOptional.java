@@ -3,10 +3,12 @@ package sebfisch;
 import java.util.function.Function;
 
 public interface BasicOptional<T> {
+    // <U> BasicOptional<U> map(Function<T,U> fun);
+
     class Empty<T> implements BasicOptional<T> {
-        public <U> BasicOptional<U> map(Function<T,U> fun) {
-            return new Empty<>();
-        }
+        // public <U> BasicOptional<U> map(Function<T,U> fun) {
+        //     return new Empty<>();
+        // }
     }
 
     class Present<T> implements BasicOptional<T> {
@@ -20,9 +22,9 @@ public interface BasicOptional<T> {
             return value;
         }
 
-        public <U> BasicOptional<U> map(Function<T,U> fun) {
-            return new Present<>(fun.apply(this.value()));
-        }
+        // public <U> BasicOptional<U> map(Function<T,U> fun) {
+        //     return new Present<>(fun.apply(this.value()));
+        // }
     }
 
     default <U> BasicOptional<U> map(Function<T,U> fun) {
