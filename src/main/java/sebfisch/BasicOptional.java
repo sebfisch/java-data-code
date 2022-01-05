@@ -32,7 +32,7 @@ public interface BasicOptional<T> {
 
         if (this instanceof Present) {
             final Present<T> self = (Present<T>) this;
-            return new Present<>(fun.apply(self.value()));
+            return new Present<>(fun.apply(self.value));
         }
 
         throw new IllegalStateException("neither empty nor present");
