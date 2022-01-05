@@ -1,7 +1,7 @@
 # Functional Patterns in Java
 
 This repository contains source code underlying
-[Data and Patterns in Java](https://sebfisch.github.io/java-data/).
+[Algebraic Datatypes and Pattern Matching in Java](https://sebfisch.github.io/java-data/).
 In order to run it, you need Java Version 17.
 
 You can install 
