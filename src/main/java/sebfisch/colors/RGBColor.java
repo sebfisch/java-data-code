@@ -17,6 +17,23 @@ public record RGBColor(double red, double green, double blue) {
         }
     }
 
+    // public double saturation() {
+    //     return switch (this) {
+    //         case RGBColor(var r, var g, var b) && max(r,g,b) == 0
+    //             -> 0;
+    //         case RGBColor(var r, var g, var b)
+    //             -> (max(r,g,b) - min(r,g,b)) / max(r,g,b);
+    //     };
+    // }
+
+    // private static double max(double a, double b, double c) {
+    //     return Math.max(a, Math.max(b,c));
+    // }
+
+    // private static double min(double a, double b, double c) {
+    //     return Math.min(a, Math.min(b,c));
+    // }
+
     public static Optional<RGBColor> findBrightest(List<RGBColor> colors) {
         record AugmentedColor(RGBColor color, double brightness) {
             AugmentedColor(RGBColor color) {
