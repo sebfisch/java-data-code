@@ -5,7 +5,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
 import org.junit.jupiter.api.Test;
 
-class ColorTest {
+class RGBColorTest {
     @Test
     void testRGBdescriptionWithDefaultBranchForNull() {
         assertThrows(NullPointerException.class, () -> {
