@@ -4,6 +4,15 @@ import java.util.function.Function;
 import java.util.function.Predicate;
 
 public sealed interface Optional<T> {
+
+    public static <U> Empty<U> empty() {
+        return new Empty<>();
+    }
+
+    public static <U> Present<U> of(U value) {
+        return new Present<>(value);
+    }
+
     record Empty<T> () implements Optional<T> {
     }
 

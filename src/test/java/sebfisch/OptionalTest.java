@@ -7,36 +7,36 @@ import org.junit.jupiter.api.Test;
 class OptionalTest {
     @Test
     void testPresent() {
-        assertEquals("x", new Optional.Present<>("x").value());
+        assertEquals("x", Optional.of("x").value());
     }
 
     @Test
     void testEquals() {
-        assertEquals(new Optional.Empty<>(), new Optional.Empty<>());
-        assertEquals(new Optional.Present<>("y"), new Optional.Present<>("y"));
+        assertEquals(Optional.empty(), Optional.empty());
+        assertEquals(Optional.of("y"), Optional.of("y"));
     }
 
     // TODO: Task 1.1 - add test for null check in present constructor
 
     @Test
     void testMap() {
-        final Optional<String> hi = new Optional.Present<>("hello");
+        final Optional<String> hi = Optional.of("hello");
         final Optional<Integer> actual = hi.map(String::length);
-        final Optional<Integer> expected = new Optional.Present<>(5);
+        final Optional<Integer> expected = Optional.of(5);
         assertEquals(expected, actual);
     }
 
     @Test
     void testMatchingFilter() {
-        final Optional<String> hi = new Optional.Present<>("hello");
+        final Optional<String> hi = Optional.of("hello");
         final Optional<String> actual = hi.filter(s -> s.length() > 2);
         assertEquals(hi, actual);
     }
 
     @Test
     void testRejectingFilter() {
-        final Optional<String> hi = new Optional.Present<>("hello");
+        final Optional<String> hi = Optional.of("hello");
         final Optional<String> actual = hi.filter(s -> s.length() < 2);
-        assertEquals(new Optional.Empty<>(), actual);
+        assertEquals(Optional.empty(), actual);
     }
 }
