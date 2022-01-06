@@ -19,9 +19,7 @@ class OptionalTest {
 
     @Test
     void testNullCheck() {
-        assertThrows(NullPointerException.class, () -> {
-            new Optional.Present<>(null);
-        });
+        assertThrows(NullPointerException.class, () -> Optional.of(null));
     }
       
     @Test
