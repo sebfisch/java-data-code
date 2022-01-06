@@ -27,7 +27,7 @@ class OptionalTest {
     }
 
     @Test
-    void testMatchingFilter() {
+    void testAcceptingFilter() {
         final Optional<String> hi = Optional.of("hello");
         final Optional<String> actual = hi.filter(s -> s.length() > 2);
         assertEquals(hi, actual);
