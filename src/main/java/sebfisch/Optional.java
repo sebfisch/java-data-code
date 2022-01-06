@@ -1,5 +1,6 @@
 package sebfisch;
 
+import java.util.Objects;
 import java.util.function.Function;
 import java.util.function.Predicate;
 
@@ -18,9 +19,7 @@ public sealed interface Optional<T> {
 
     record Present<T> (T value) implements Optional<T> {
         public Present {
-            if (value == null) {
-                throw new IllegalArgumentException("value must not be null");
-            }
+            Objects.requireNonNull(value, "value must not be null");
         }
     }
 

@@ -19,7 +19,7 @@ class OptionalTest {
 
     @Test
     void testNullCheck() {
-        assertThrows(IllegalArgumentException.class, () -> {
+        assertThrows(NullPointerException.class, () -> {
             new Optional.Present<>(null);
         });
     }
