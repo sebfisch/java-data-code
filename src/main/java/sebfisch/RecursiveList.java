@@ -12,6 +12,7 @@ public sealed interface RecursiveList<T> {
             implements RecursiveList<T> {
     }
 
+    @SuppressWarnings("unchecked")
     static <U> RecursiveList<U> of(U... args) {
         if (args.length == 0) {
             return new Empty<>();
