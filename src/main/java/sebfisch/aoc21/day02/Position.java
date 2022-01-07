@@ -4,9 +4,9 @@ public class Position {
     protected int depth;
     protected int horizontal;
 
-    public Position() {
-        this.depth = 0;
-        this.horizontal = 0;
+    public Position(int depth, int horizontal) {
+        this.depth = depth;
+        this.horizontal = horizontal;
     }
 
     public int product() {
