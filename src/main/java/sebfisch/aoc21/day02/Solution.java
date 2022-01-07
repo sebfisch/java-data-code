@@ -23,7 +23,7 @@ public final class Solution {
     }
 
     private static void processExampleInput(final Position pos) {
-        Command.exampleInput().forEach(pos::moveBy);
+        Command.exampleInput().forEachOrdered(pos::moveBy);
         System.out.println(pos.product());
     }
 
@@ -31,7 +31,7 @@ public final class Solution {
             throws URISyntaxException, IOException {
         URL resource = Solution.class.getResource("/commands.txt");
         try (Stream<String> lines = Files.lines(Paths.get(resource.toURI()))) {
-            lines.map(Command::parse).forEach(pos::moveBy);
+            lines.map(Command::parse).forEachOrdered(pos::moveBy);
         }
         System.out.println(pos.product());
     }
