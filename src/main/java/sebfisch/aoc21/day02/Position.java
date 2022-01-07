@@ -22,6 +22,8 @@ public class Position {
             depth += cmd.steps();
         }
 
-        horizontal += cmd.steps();
+        if (cmd instanceof Command.Forward) {
+            horizontal += cmd.steps();
+        }
     }
 }
