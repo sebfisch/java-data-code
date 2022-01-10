@@ -15,11 +15,11 @@ class RGBColorTest {
 
     @Test
     void testRGBdescriptionWithNullCheckForNull() {
-        assertEquals("colorless", RGBColor.describeWithNullCheck(null));
+        assertEquals("other", RGBColor.describeWithNullCheck(null));
     }
 
     @Test
     void testRGBdescriptionWithTotalBranchForNull() {
-        assertEquals("colorless", RGBColor.describeWithTotalBranch(null));
+        assertEquals("other", RGBColor.describeWithTotalBranch(null));
     }
 }
