@@ -26,4 +26,34 @@ public class Position {
             horizontal += cmd.steps();
         }
     }
+
+    @Override
+    public String toString() {
+        return "Position [depth=" + depth + ", horizontal=" + horizontal + "]";
+    }
+
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int result = 1;
+        result = prime * result + depth;
+        result = prime * result + horizontal;
+        return result;
+    }
+
+    @Override
+    public boolean equals(Object obj) {
+        if (this == obj)
+            return true;
+        if (obj == null)
+            return false;
+        if (getClass() != obj.getClass())
+            return false;
+        Position other = (Position) obj;
+        if (depth != other.depth)
+            return false;
+        if (horizontal != other.horizontal)
+            return false;
+        return true;
+    }
 }

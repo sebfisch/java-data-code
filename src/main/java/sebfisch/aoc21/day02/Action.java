@@ -1,6 +1,9 @@
 package sebfisch.aoc21.day02;
 
-public record Action(int depth, int horizontal, int aim) {
+import java.util.function.UnaryOperator;
+
+public record Action(int depth, int horizontal, int aim)
+        implements UnaryOperator<AimingPosition> {
 
     public static Action from(Command cmd) {
         return switch (cmd) {
@@ -24,5 +27,11 @@ public record Action(int depth, int horizontal, int aim) {
 
     public AimingPosition applyToInitialPosition() {
         return new AimingPosition(depth, horizontal, aim);
+    }
+
+    @Override
+    public AimingPosition apply(AimingPosition pos) {
+        return new Action(pos.depth, pos.horizontal, pos.aim)
+                .compose(this).applyToInitialPosition();
     }
 }
