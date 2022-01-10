@@ -52,7 +52,7 @@ public record RGBColor(double red, double green, double blue) {
             case RGBColor c && c.red > c.green && c.red > c.blue -> "reddish";
             case RGBColor c && c.green > c.red && c.green > c.blue -> "greenish";
             case RGBColor c && c.blue > c.red && c.blue > c.green -> "blueish";
-            default -> "colorless";
+            default -> "other";
         };
     }
 
@@ -61,7 +61,7 @@ public record RGBColor(double red, double green, double blue) {
             case RGBColor c && c.red > c.green && c.red > c.blue -> "reddish";
             case RGBColor c && c.green > c.red && c.green > c.blue -> "greenish";
             case RGBColor c && c.blue > c.red && c.blue > c.green -> "blueish";
-            case null, default -> "colorless";
+            case null, default -> "other";
         };
     }
 
@@ -70,7 +70,7 @@ public record RGBColor(double red, double green, double blue) {
             case RGBColor c && c.red > c.green && c.red > c.blue -> "reddish";
             case RGBColor c && c.green > c.red && c.green > c.blue -> "greenish";
             case RGBColor c && c.blue > c.red && c.blue > c.green -> "blueish";
-            case RGBColor c -> "colorless";
+            case RGBColor c -> "other";
         };
     }
 }
