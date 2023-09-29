@@ -70,7 +70,7 @@ public record RGBColor(double red, double green, double blue) {
       case RGBColor c when c.green > c.red && c.green > c.blue -> "greenish";
       case RGBColor c when c.blue > c.red && c.blue > c.green -> "blueish";
       case RGBColor c -> "other";
-      case null -> "null";
+      case null -> "other";
     };
   }
 }
