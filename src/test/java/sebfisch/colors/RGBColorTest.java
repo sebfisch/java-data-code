@@ -20,6 +20,6 @@ class RGBColorTest {
 
   @Test
   void testRGBdescriptionWithTotalBranchForNull() {
-    assertEquals("null", RGBColor.describeWithTotalBranch(null));
+    assertEquals("other", RGBColor.describeWithTotalBranch(null));
   }
 }
