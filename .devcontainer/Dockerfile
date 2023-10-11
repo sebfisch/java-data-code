@@ -1,11 +1,11 @@
-ARG JAVA_VERSION=21
+ARG JAVA_VERSION=17
 FROM mcr.microsoft.com/openjdk/jdk:$JAVA_VERSION-ubuntu
 CMD zsh --login
 
 ARG MAVEN3_VERSION=3.9.4
 
 ENV LANG en_US.UTF-8
-ENV JAVA_HOME /usr/lib/jvm/msopenjdk-21-amd64
+ENV JAVA_HOME /usr/lib/jvm/msopenjdk-17-amd64
 ENV PATH "${JAVA_HOME}/bin:${PATH}"
 
 ENV USER=me
