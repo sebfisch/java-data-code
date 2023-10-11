@@ -17,13 +17,16 @@ public record RGBColor(double red, double green, double blue) {
     }
   }
 
-  public double saturation() {
-    return switch (this) {
-      case RGBColor(var r, var g, var b) when max(r, g, b) == 0 -> 0;
-      case RGBColor(var r, var g, var b) -> (max(r, g, b) - min(r, g, b)) / max(r, g, b);
-      default -> throw new IllegalStateException("unreachable");
-    };
-  }
+  // requires JDK 21
+  //
+  // public double saturation() {
+  // return switch (this) {
+  // case RGBColor(var r, var g, var b) when max(r, g, b) == 0 -> 0;
+  // case RGBColor(var r, var g, var b) -> (max(r, g, b) - min(r, g, b)) / max(r,
+  // g, b);
+  // default -> throw new IllegalStateException("unreachable");
+  // };
+  // }
 
   private static double max(double a, double b, double c) {
     return Math.max(a, Math.max(b, c));
@@ -48,29 +51,29 @@ public record RGBColor(double red, double green, double blue) {
 
   public static String describeWithDefaultBranch(RGBColor color) {
     return switch (color) {
-      case RGBColor c when c.red > c.green && c.red > c.blue -> "reddish";
-      case RGBColor c when c.green > c.red && c.green > c.blue -> "greenish";
-      case RGBColor c when c.blue > c.red && c.blue > c.green -> "blueish";
+      case RGBColor c && c.red > c.green && c.red > c.blue -> "reddish";
+      case RGBColor c && c.green > c.red && c.green > c.blue -> "greenish";
+      case RGBColor c && c.blue > c.red && c.blue > c.green -> "blueish";
       default -> "other";
     };
   }
 
   public static String describeWithNullCheck(RGBColor color) {
     return switch (color) {
-      case RGBColor c when c.red > c.green && c.red > c.blue -> "reddish";
-      case RGBColor c when c.green > c.red && c.green > c.blue -> "greenish";
-      case RGBColor c when c.blue > c.red && c.blue > c.green -> "blueish";
+      case RGBColor c && c.red > c.green && c.red > c.blue -> "reddish";
+      case RGBColor c && c.green > c.red && c.green > c.blue -> "greenish";
+      case RGBColor c && c.blue > c.red && c.blue > c.green -> "blueish";
       case null, default -> "other";
     };
   }
 
   public static String describeWithTotalBranch(RGBColor color) {
     return switch (color) {
-      case RGBColor c when c.red > c.green && c.red > c.blue -> "reddish";
-      case RGBColor c when c.green > c.red && c.green > c.blue -> "greenish";
-      case RGBColor c when c.blue > c.red && c.blue > c.green -> "blueish";
-      case RGBColor c -> "other";
-      case null -> "other";
+      case RGBColor c && c.red > c.green && c.red > c.blue -> "reddish";
+      case RGBColor c && c.green > c.red && c.green > c.blue -> "greenish";
+      case RGBColor c && c.blue > c.red && c.blue > c.green -> "blueish";
+      case RGBColor c -> "other"; // includes null in JDK 17 but not in JDK 21
+      // case null -> "other";
     };
   }
 }
