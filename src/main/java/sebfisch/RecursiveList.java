@@ -66,7 +66,7 @@ public sealed interface RecursiveList<T> {
   default RecursiveList<T> filter(Predicate<T> pred) {
     return switch (this) {
       case Empty<T> self -> self;
-      case Populated<T> self when pred.test(self.head) ->
+      case Populated < T > self && pred.test(self.head) ->
         new Populated<>(self.head, self.tail.filter(pred));
       case Populated<T> self -> self.tail.filter(pred);
     };
