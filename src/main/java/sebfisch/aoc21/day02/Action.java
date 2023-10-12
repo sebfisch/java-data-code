@@ -7,9 +7,9 @@ public record Action(int depth, int horizontal, int aim)
 
   public static Action from(Command cmd) {
     return switch (cmd) {
-      case Command.Up up -> new Action(0, 0, -up.steps());
-      case Command.Down down -> new Action(0, 0, down.steps());
-      case Command.Forward fwd -> new Action(0, fwd.steps(), 0);
+      case Command.Up(var steps) -> new Action(0, 0, -steps);
+      case Command.Down(var steps) -> new Action(0, 0, steps);
+      case Command.Forward(var steps) -> new Action(0, steps, 0);
     };
   }
 

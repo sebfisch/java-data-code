@@ -30,10 +30,17 @@ public sealed interface RecursiveList<T> {
   // return 0;
   // }
 
+  // default int length() {
+  // return switch (this) {
+  // case Empty<T> self -> 0;
+  // case Populated<T> self -> 1 + self.tail.length();
+  // };
+  // }
+
   default int length() {
     return switch (this) {
-      case Empty<T> self -> 0;
-      case Populated<T> self -> 1 + self.tail.length();
+      case Empty() -> 0;
+      case Populated(var head, var tail) -> 1 + tail.length();
     };
   }
 
@@ -44,11 +51,19 @@ public sealed interface RecursiveList<T> {
   // return new Empty<>();
   // }
 
+  // default <U> RecursiveList<U> map(Function<T, U> fun) {
+  // return switch (this) {
+  // case Empty<T> self -> new Empty<>();
+  // case Populated<T> self ->
+  // new Populated<>(fun.apply(self.head), self.tail.map(fun));
+  // };
+  // }
+
   default <U> RecursiveList<U> map(Function<T, U> fun) {
     return switch (this) {
-      case Empty<T> self -> new Empty<>();
-      case Populated<T> self ->
-        new Populated<>(fun.apply(self.head), self.tail.map(fun));
+      case Empty() -> new Empty<>();
+      case Populated(var head, var tail) ->
+        new Populated<>(fun.apply(head), tail.map(fun));
     };
   }
 
@@ -63,12 +78,21 @@ public sealed interface RecursiveList<T> {
   // return this;
   // }
 
+  // default RecursiveList<T> filter(Predicate<T> pred) {
+  // return switch (this) {
+  // case Empty<T> self -> self;
+  // case Populated<T> self when pred.test(self.head) ->
+  // new Populated<>(self.head, self.tail.filter(pred));
+  // case Populated<T> self -> self.tail.filter(pred);
+  // };
+  // }
+
   default RecursiveList<T> filter(Predicate<T> pred) {
     return switch (this) {
-      case Empty<T> self -> self;
-      case Populated<T> self when pred.test(self.head) ->
-        new Populated<>(self.head, self.tail.filter(pred));
-      case Populated<T> self -> self.tail.filter(pred);
+      case Empty() -> this;
+      case Populated(var head, var tail) when pred.test(head) ->
+        new Populated<>(head, tail.filter(pred));
+      case Populated(var head, var tail) -> tail.filter(pred);
     };
   }
 }

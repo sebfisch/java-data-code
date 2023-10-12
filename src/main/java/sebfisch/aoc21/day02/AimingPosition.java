@@ -10,15 +10,15 @@ public class AimingPosition extends Position {
 
   public void moveBy(Command cmd) {
     switch (cmd) {
-      case Command.Up up -> {
-        aim -= up.steps();
+      case Command.Up(var steps) -> {
+        aim -= steps;
       }
-      case Command.Down down -> {
-        aim += down.steps();
+      case Command.Down(var steps) -> {
+        aim += steps;
       }
-      case Command.Forward fwd -> {
-        horizontal += fwd.steps();
-        depth += aim * fwd.steps();
+      case Command.Forward(var steps) -> {
+        horizontal += steps;
+        depth += aim * steps;
       }
     }
   }
