@@ -21,7 +21,6 @@ public record RGBColor(double red, double green, double blue) {
     return switch (this) {
       case RGBColor(var r, var g, var b) when max(r, g, b) == 0 -> 0;
       case RGBColor(var r, var g, var b) -> (max(r, g, b) - min(r, g, b)) / max(r, g, b);
-      default -> throw new IllegalStateException("unreachable");
     };
   }
 
