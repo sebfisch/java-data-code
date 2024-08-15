@@ -30,7 +30,7 @@ public sealed interface Optional<T> {
   default Optional<T> filter(Predicate<T> pred) {
     return switch (this) {
       case Empty() -> this;
-      case Present(var value) when pred.test(value) -> this;
+      case Present<T>(var value) when pred.test(value) -> this;
       case Present(var value) -> new Empty<>();
     };
   }
