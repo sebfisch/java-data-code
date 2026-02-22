@@ -27,7 +27,7 @@ RUN \
   addgroup --gid $GID $GROUP && \
   adduser --disabled-password --gecos '' --uid $UID --gid $GID $USER && \
   echo "$USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USER && \
-  mkdir -p /usr/share/maven && \ # 
+  mkdir -p /usr/share/maven && \
   curl -fsSL https://dlcdn.apache.org/maven/maven-3/$MAVEN3_VERSION/binaries/apache-maven-$MAVEN3_VERSION-bin.tar.gz | \
   tar -xzC /usr/share/maven --strip-components=1 && \
   ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
