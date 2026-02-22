@@ -1,11 +1,11 @@
-ARG JAVA_VERSION=21
+ARG JAVA_VERSION=25
 FROM mcr.microsoft.com/openjdk/jdk:$JAVA_VERSION-ubuntu
 CMD zsh --login
 
-ARG MAVEN3_VERSION=3.9.4
+ARG MAVEN3_VERSION=3.9.12
 
 ENV LANG en_US.UTF-8
-ENV JAVA_HOME /usr/lib/jvm/msopenjdk-21-amd64
+ENV JAVA_HOME /usr/lib/jvm/msopenjdk-${JAVA_VERSION}-amd64
 ENV PATH "${JAVA_HOME}/bin:${PATH}"
 
 ENV USER=me
@@ -27,8 +27,8 @@ RUN \
   addgroup --gid $GID $GROUP && \
   adduser --disabled-password --gecos '' --uid $UID --gid $GID $USER && \
   echo "$USER ALL=(ALL) NOPASSWD:ALL" > /etc/sudoers.d/$USER && \
-  mkdir -p /usr/share/maven && \
-  curl -fsSL http://apache.osuosl.org/maven/maven-3/${MAVEN3_VERSION}/binaries/apache-maven-${MAVEN3_VERSION}-bin.tar.gz | \
+  mkdir -p /usr/share/maven && \ # 
+  curl -fsSL https://dlcdn.apache.org/maven/maven-3/${MAVEN#_VERSION}/binaries/apache-maven-${MAVEN#_VERSION}-bin.tar.gz | \
   tar -xzC /usr/share/maven --strip-components=1 && \
   ln -s /usr/share/maven/bin/mvn /usr/bin/mvn
   
