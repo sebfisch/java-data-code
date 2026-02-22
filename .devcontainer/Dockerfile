@@ -5,7 +5,7 @@ CMD zsh --login
 ARG MAVEN3_VERSION=3.9.12
 
 ENV LANG en_US.UTF-8
-ENV JAVA_HOME /usr/lib/jvm/msopenjdk-25-amd64 # cannot use $JAVA_VERSION here
+ENV JAVA_HOME /usr/lib/jvm/msopenjdk-25-amd64
 ENV PATH "${JAVA_HOME}/bin:${PATH}"
 
 ENV USER=me
